@@ -1,8 +1,11 @@
 $(function() {
 	$('h1').css({color: 'yellow'})
 	chrome.extension.onMessage.addListener(function(request, sender, response){
-		console.log(request.value)
-		document.write(request.value)
+		console.log(request)
+		for (let el in request) {
+			console.log("el: " + request[el])
+		}
+		$('body').append('<div>' + request + '</div>')
 	})
 	$('#get').click(inject)
 });
